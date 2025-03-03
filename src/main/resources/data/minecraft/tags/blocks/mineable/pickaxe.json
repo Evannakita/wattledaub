@@ -1,0 +1,21 @@
+{
+    "replace": false,
+    "values": [
+        "wattledaub:scattered_clay_daub",
+        "wattledaub:covered_clay_daub",
+        "wattledaub:clay_daub",
+        "wattledaub:scattered_coarse_clay_daub",
+        "wattledaub:covered_coarse_clay_daub",
+        "wattledaub:coarse_clay_daub",
+        "wattledaub:scattered_mud_daub",
+        "wattledaub:covered_mud_daub",
+        "wattledaub:mud_daub",
+        "wattledaub:scattered_packed_mud_daub",
+        "wattledaub:covered_packed_mud_daub",
+        "wattledaub:packed_mud_daub",
+        "wattledaub:scattered_sand_daub",
+        "wattledaub:covered_sand_daub",
+        "wattledaub:sand_daub"
+
+    ]
+}

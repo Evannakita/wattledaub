@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+        "layer0": "wattledaub:item/mud_daub_ball"
+    }
+}

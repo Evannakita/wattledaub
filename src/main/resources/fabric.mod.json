@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "wattledaub",
+	"version": "${version}",
+	"name": "Wattle and Daub",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/wattledaub/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"evannakita.wattledaub.WattleAndDaub"
+		],
+		"client": [
+			"evannakita.wattledaub.WattleAndDaubClient"
+		]
+	},
+	"mixins": [
+		"wattledaub.mixins.json",
+		{
+			"config": "wattledaub.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

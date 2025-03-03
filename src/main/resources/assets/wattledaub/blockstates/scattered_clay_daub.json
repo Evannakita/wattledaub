@@ -1,0 +1,9 @@
+{
+    "variants": {
+      "": [
+        { "model": "wattledaub:block/scattered_clay_daub_1" },
+        { "model": "wattledaub:block/scattered_clay_daub_2" },
+        { "model": "wattledaub:block/scattered_clay_daub_3" }
+      ]
+    }
+}

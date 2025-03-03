@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/cube_all",
+    "textures": {
+        "all": "wattledaub:block/scattered_sand_daub_1"
+    }
+}

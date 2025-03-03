@@ -1,0 +1,24 @@
+{
+    "block.wattledaub.scattered_clay_daub": "Scattered Clay Daub",
+    "block.wattledaub.covered_clay_daub": "Covered Clay Daub",
+    "block.wattledaub.clay_daub": "Clay Daub",
+    "block.wattledaub.scattered_coarse_clay_daub": "Scattered Coarse Clay Daub",
+    "block.wattledaub.covered_coarse_clay_daub": "Covered Coarse Clay Daub",
+    "block.wattledaub.coarse_clay_daub": "Coarse Clay Daub",
+    "block.wattledaub.scattered_mud_daub": "Scattered Mud Daub",
+    "block.wattledaub.covered_mud_daub": "Covered Mud Daub",
+    "block.wattledaub.mud_daub": "Mud Daub",
+    "block.wattledaub.scattered_packed_mud_daub": "Scattered Packed Mud Daub",
+    "block.wattledaub.covered_packed_mud_daub": "Covered Packed Mud Daub",
+    "block.wattledaub.packed_mud_daub": "Packed Mud Daub",
+    "block.wattledaub.scattered_sand_daub": "Scattered Sand Daub",
+    "block.wattledaub.covered_sand_daub": "Covered Sand Daub",
+    "block.wattledaub.sand_daub": "Sand Daub",
+    "block.wattledaub.wattle": "Wattle",
+
+    "item.wattledaub.clay_daub_ball": "Clay Daub Ball",
+    "item.wattledaub.coarse_clay_daub_ball": "Coarse Clay Daub Ball",
+    "item.wattledaub.mud_daub_ball": "Mud Daub Ball",
+    "item.wattledaub.packed_mud_daub_ball": "Packed Mud Daub Ball",
+    "item.wattledaub.sand_daub_ball": "Sand Daub Ball"
+}

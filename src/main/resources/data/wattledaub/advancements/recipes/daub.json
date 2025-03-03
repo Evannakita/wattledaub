@@ -1,0 +1,28 @@
+{
+    "criteria": {
+        "has_clay": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:clay_ball"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_clay"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "wattledaub:clay_daub_ball",
+            "wattledaub:coarse_clay_daub_ball",
+            "wattledaub:mud_daub_ball",
+            "wattledaub:packed_mud_daub_ball",
+            "wattledaub:sand_daub_ball"
+        ]
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+      "o": {
+        "item": "minecraft:clay_ball"
+      },
+      "#": {
+        "item": "minecraft:dirt"
+      }
+    },
+    "pattern": [
+      "o#",
+      "#o"
+    ],
+    "result": {
+      "count": 6,
+      "item": "wattledaub:clay_daub_ball"
+    }
+  }

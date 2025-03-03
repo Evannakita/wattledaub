@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/cube_all",
+    "textures": {
+        "all": "wattledaub:block/packed_mud_daub"
+    }
+}
