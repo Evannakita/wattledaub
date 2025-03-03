@@ -126,6 +126,6 @@ public class ModBlocks {
     );
 
     public static Block register(String id, Block block) {
-        return (Block)Registry.register(Registries.BLOCK, new Identifier(WattleAndDaub.MOD_ID, id), block);
+        return (Block)Registry.register(Registries.BLOCK, Identifier.of(WattleAndDaub.MOD_ID, id), block);
     }
 }

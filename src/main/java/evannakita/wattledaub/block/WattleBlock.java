@@ -10,8 +10,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -40,31 +40,30 @@ public class WattleBlock extends PaneBlock {
 	}
 
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+    public ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {
-            ItemStack itemStack = player.getStackInHand(hand);
             Block newBlock = this;
-            if (itemStack.isOf(ModItems.CLAY_DAUB_BALL)) {
+            if (stack.isOf(ModItems.CLAY_DAUB_BALL)) {
                 newBlock = ModBlocks.SCATTERED_CLAY_DAUB;
-            } else if (itemStack.isOf(ModItems.COARSE_CLAY_DAUB_BALL)) {
+            } else if (stack.isOf(ModItems.COARSE_CLAY_DAUB_BALL)) {
                 newBlock = ModBlocks.SCATTERED_CLAY_DAUB;
-            } else if (itemStack.isOf(ModItems.MUD_DAUB_BALL)) {
+            } else if (stack.isOf(ModItems.MUD_DAUB_BALL)) {
                 newBlock = ModBlocks.SCATTERED_CLAY_DAUB;
-            } else if (itemStack.isOf(ModItems.PACKED_MUD_DAUB_BALL)) {
+            } else if (stack.isOf(ModItems.PACKED_MUD_DAUB_BALL)) {
                 newBlock = ModBlocks.SCATTERED_CLAY_DAUB;
-            } else if (itemStack.isOf(ModItems.SAND_DAUB_BALL)) {
+            } else if (stack.isOf(ModItems.SAND_DAUB_BALL)) {
                 newBlock = ModBlocks.SCATTERED_CLAY_DAUB;
             }
             if (newBlock != this) {
                 world.setBlockState(pos, newBlock.getDefaultState(), Block.NOTIFY_ALL);
                 world.playSound(null, pos, SoundEvents.BLOCK_MUD_PLACE, SoundCategory.BLOCKS, 0.75f, 1.0f);
                 if (!player.isCreative()) {
-                    itemStack.decrement(1);
+                    stack.decrement(1);
                 }
-				player.incrementStat(Stats.USED.getOrCreateStat(itemStack.getItem()));
-                return ActionResult.success(world.isClient);
+				player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
+                return ItemActionResult.success(world.isClient);
             }
         }
-        return ActionResult.PASS;
+        return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
     }
 }

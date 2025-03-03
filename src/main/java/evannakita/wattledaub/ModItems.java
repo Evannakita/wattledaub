@@ -7,7 +7,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public class ModItems {
+public class ModItems  {
     public static final Item CLAY_DAUB_BALL = new DaubItem(new Item.Settings());
     public static final Item COARSE_CLAY_DAUB_BALL = new DaubItem(new Item.Settings());
     public static final Item MUD_DAUB_BALL = new DaubItem(new Item.Settings());
@@ -32,7 +32,7 @@ public class ModItems {
     public static final Item WATTLE = new BlockItem(ModBlocks.WATTLE, new Item.Settings());
 
     public static Item register(String id, Item item) {
-        return (Item)Registry.register(Registries.ITEM, new Identifier(WattleAndDaub.MOD_ID, id), item);
+        return (Item)Registry.register(Registries.ITEM, Identifier.of(WattleAndDaub.MOD_ID, id), item);
     }
 
 }

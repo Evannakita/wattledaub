@@ -7,6 +7,7 @@ import evannakita.wattledaub.enums.DaubType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -14,8 +15,8 @@ import net.minecraft.item.ShovelItem;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -28,13 +29,12 @@ public class DaubBlock extends Block {
     }
 
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+    public ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {
             Block block = state.getBlock();
             DaubType type = this.getType(block);
             DaubLevel level = this.getLevel(block);
-            ItemStack itemStack = player.getStackInHand(hand);
-            Item item = itemStack.getItem();
+            Item item = stack.getItem();
             Block newBlock = block;
             boolean addDaub = false;
             boolean removeDaub = false;
@@ -94,7 +94,7 @@ public class DaubBlock extends Block {
                 if (addDaub)  {
                     world.playSound(null, pos, SoundEvents.BLOCK_MUD_PLACE, SoundCategory.BLOCKS, 0.75f, 1.0f);
                     if (!player.getAbilities().creativeMode) {
-                        itemStack.decrement(1);
+                        stack.decrement(1);
                     }
                 }
                 if (removeDaub) {
@@ -120,7 +120,7 @@ public class DaubBlock extends Block {
                             0.05 * (double)direction2.getOffsetX() + world.random.nextDouble() * 0.02, 0.05, 0.05 * (double)direction2.getOffsetZ() + world.random.nextDouble() * 0.02
                         );
                         world.spawnEntity(itemEntity);
-                        itemStack.damage(1, player, playerx -> playerx.sendToolBreakStatus(hand));
+            			stack.damage(1, player, LivingEntity.getSlotForHand(hand));
                     }
                     world.playSound(null, pos, SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 0.75f, 1.0f);
                 }
@@ -130,10 +130,10 @@ public class DaubBlock extends Block {
                     world.setBlockState(pos, newBlock.getDefaultState(), Block.NOTIFY_ALL);
                 }
 				player.incrementStat(Stats.USED.getOrCreateStat(item));
-                return ActionResult.success(world.isClient);
+                return ItemActionResult.success(world.isClient);
             }
         }
-        return ActionResult.PASS;
+        return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
     }
 
     public DaubLevel getLevel(Block block) {
