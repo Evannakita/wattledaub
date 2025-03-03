@@ -9,18 +9,11 @@
                     }
                 ]
             }
-        },
-        "has_the_recipe": {
-            "conditions": {
-                "recipes": "minecraft:birch_stairs"
-            },
-            "trigger": "minecraft:recipe_unlocked"
         }
     },
     "requirements": [
         [
-            "has_clay",
-            "has_the_recipe"
+            "has_clay"
         ]
     ],
     "rewards": {
