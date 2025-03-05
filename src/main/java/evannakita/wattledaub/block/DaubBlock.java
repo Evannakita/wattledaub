@@ -1,5 +1,7 @@
 package evannakita.wattledaub.block;
 
+import com.mojang.serialization.MapCodec;
+
 import evannakita.wattledaub.ModBlocks;
 import evannakita.wattledaub.ModItems;
 import evannakita.wattledaub.enums.DaubLevel;
@@ -23,6 +25,12 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
 public class DaubBlock extends Block {
+	public static final MapCodec<DaubBlock> CODEC = createCodec(DaubBlock::new);
+
+	@Override
+	public MapCodec<? extends DaubBlock> getCodec() {
+		return CODEC;
+	}
 
     public DaubBlock(Settings settings) {
         super(settings);

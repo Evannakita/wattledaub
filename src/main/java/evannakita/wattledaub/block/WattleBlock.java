@@ -1,5 +1,7 @@
 package evannakita.wattledaub.block;
 
+import com.mojang.serialization.MapCodec;
+
 import evannakita.wattledaub.ModBlocks;
 import evannakita.wattledaub.ModItems;
 import net.minecraft.block.Block;
@@ -18,6 +20,12 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
 public class WattleBlock extends PaneBlock {
+	public static final MapCodec<WattleBlock> CODEC = createCodec(WattleBlock::new);
+
+	@Override
+	public MapCodec<? extends WattleBlock> getCodec() {
+		return CODEC;
+	}
 
     public WattleBlock(Settings settings) {
         super(settings);
@@ -46,13 +54,13 @@ public class WattleBlock extends PaneBlock {
             if (stack.isOf(ModItems.CLAY_DAUB_BALL)) {
                 newBlock = ModBlocks.SCATTERED_CLAY_DAUB;
             } else if (stack.isOf(ModItems.COARSE_CLAY_DAUB_BALL)) {
-                newBlock = ModBlocks.SCATTERED_CLAY_DAUB;
+                newBlock = ModBlocks.SCATTERED_COARSE_CLAY_DAUB;
             } else if (stack.isOf(ModItems.MUD_DAUB_BALL)) {
-                newBlock = ModBlocks.SCATTERED_CLAY_DAUB;
+                newBlock = ModBlocks.SCATTERED_MUD_DAUB;
             } else if (stack.isOf(ModItems.PACKED_MUD_DAUB_BALL)) {
-                newBlock = ModBlocks.SCATTERED_CLAY_DAUB;
+                newBlock = ModBlocks.SCATTERED_PACKED_MUD_DAUB;
             } else if (stack.isOf(ModItems.SAND_DAUB_BALL)) {
-                newBlock = ModBlocks.SCATTERED_CLAY_DAUB;
+                newBlock = ModBlocks.SCATTERED_SAND_DAUB;
             }
             if (newBlock != this) {
                 world.setBlockState(pos, newBlock.getDefaultState(), Block.NOTIFY_ALL);
