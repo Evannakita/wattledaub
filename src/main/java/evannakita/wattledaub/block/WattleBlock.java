@@ -49,28 +49,27 @@ public class WattleBlock extends PaneBlock {
 
     @Override
     public ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (!world.isClient) {
-            Block newBlock = this;
-            if (stack.isOf(ModItems.CLAY_DAUB_BALL)) {
-                newBlock = ModBlocks.SCATTERED_CLAY_DAUB;
-            } else if (stack.isOf(ModItems.COARSE_CLAY_DAUB_BALL)) {
-                newBlock = ModBlocks.SCATTERED_COARSE_CLAY_DAUB;
-            } else if (stack.isOf(ModItems.MUD_DAUB_BALL)) {
-                newBlock = ModBlocks.SCATTERED_MUD_DAUB;
-            } else if (stack.isOf(ModItems.PACKED_MUD_DAUB_BALL)) {
-                newBlock = ModBlocks.SCATTERED_PACKED_MUD_DAUB;
-            } else if (stack.isOf(ModItems.SAND_DAUB_BALL)) {
-                newBlock = ModBlocks.SCATTERED_SAND_DAUB;
+        Block newBlock = this;
+        if (stack.isOf(ModItems.CLAY_DAUB_BALL)) {
+            newBlock = ModBlocks.SCATTERED_CLAY_DAUB;
+        } else if (stack.isOf(ModItems.COARSE_CLAY_DAUB_BALL)) {
+            newBlock = ModBlocks.SCATTERED_COARSE_CLAY_DAUB;
+        } else if (stack.isOf(ModItems.MUD_DAUB_BALL)) {
+            newBlock = ModBlocks.SCATTERED_MUD_DAUB;
+        } else if (stack.isOf(ModItems.PACKED_MUD_DAUB_BALL)) {
+            newBlock = ModBlocks.SCATTERED_PACKED_MUD_DAUB;
+        } else if (stack.isOf(ModItems.SAND_DAUB_BALL)) {
+            newBlock = ModBlocks.SCATTERED_SAND_DAUB;
+        }
+        if (newBlock != this) {
+            if (world.isClient) return ItemActionResult.SUCCESS;
+            world.setBlockState(pos, newBlock.getDefaultState(), Block.NOTIFY_ALL);
+            world.playSound(null, pos, SoundEvents.BLOCK_MUD_PLACE, SoundCategory.BLOCKS, 0.75f, 1.0f);
+            if (!player.isCreative()) {
+                stack.decrement(1);
             }
-            if (newBlock != this) {
-                world.setBlockState(pos, newBlock.getDefaultState(), Block.NOTIFY_ALL);
-                world.playSound(null, pos, SoundEvents.BLOCK_MUD_PLACE, SoundCategory.BLOCKS, 0.75f, 1.0f);
-                if (!player.isCreative()) {
-                    stack.decrement(1);
-                }
-				player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
-                return ItemActionResult.success(world.isClient);
-            }
+            player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
+            return ItemActionResult.success(world.isClient);
         }
         return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
     }
