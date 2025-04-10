@@ -132,11 +132,13 @@ public class DaubBlock extends Block {
                     }
                     world.playSound(null, pos, SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 0.75f, 1.0f);
                 }
+                BlockState newState;
                 if (newBlock instanceof WattleBlock) {
-                    world.setBlockState(pos, ((WattleBlock)newBlock).getPlacementState(world, pos), Block.NOTIFY_ALL);
+                    newState = ((WattleBlock)newBlock).getPlacementState(world, pos);
                 } else {
-                    world.setBlockState(pos, newBlock.getDefaultState(), Block.NOTIFY_ALL);
+                    newState = newBlock.getDefaultState();
                 }
+                world.setBlockState(pos, newState, Block.NOTIFY_ALL_AND_REDRAW);
 				player.incrementStat(Stats.USED.getOrCreateStat(item));
                 return ItemActionResult.success(world.isClient);
             }

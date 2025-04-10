@@ -2,8 +2,12 @@
     "type": "minecraft:crafting_shaped",
     "category": "building",
     "key": {
-      "o": "minecraft:clay_ball",
-      "#": "minecraft:coarse_dirt"
+      "o": {
+        "item": "minecraft:clay_ball"
+      },
+      "#": {
+        "item": "minecraft:coarse_dirt"
+      }
     },
     "pattern": [
       "o#",
@@ -11,6 +15,6 @@
     ],
     "result": {
       "count": 6,
-      "item": "wattledaub:coarse_clay_daub_ball"
+      "id": "wattledaub:coarse_clay_daub_ball"
     }
   }

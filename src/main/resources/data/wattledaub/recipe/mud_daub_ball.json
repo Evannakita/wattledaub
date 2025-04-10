@@ -2,8 +2,12 @@
     "type": "minecraft:crafting_shaped",
     "category": "building",
     "key": {
-      "o": "minecraft:clay_ball",
-      "#": "minecraft:mud"
+      "o": {
+        "item": "minecraft:clay_ball"
+      },
+      "#": {
+        "item": "minecraft:mud"
+      }
     },
     "pattern": [
       "o#",
@@ -11,6 +15,6 @@
     ],
     "result": {
       "count": 6,
-      "item": "wattledaub:mud_daub_ball"
+      "id": "wattledaub:mud_daub_ball"
     }
   }
